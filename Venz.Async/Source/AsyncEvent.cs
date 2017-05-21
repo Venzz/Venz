@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Venz.Core
+namespace Venz.Async
 {
     public class AsyncEvent
     {
