@@ -1,0 +1,9 @@
+﻿<UserControl
+    x:Class="Venz.UI.Xaml.Controls.Image"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid x:Name="LayoutControl">
+        <Image x:Name="ImageControl"/>
+    </Grid>
+</UserControl>

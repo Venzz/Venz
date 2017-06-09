@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>155dc16a-4fc0-4fd5-992a-551eaba90122</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Venz.UI.Xaml.Controls</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Converters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.State.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.EmptyListMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\Image.xaml.cs">
+      <DependentUpon>Image.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.State.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.EmptyListMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ProgressRing.xaml.cs">
+      <DependentUpon>ProgressRing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\TextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\ItemsSourceModificationListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ProgressRing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>
