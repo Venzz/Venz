@@ -1,3 +1,5 @@
 */bin/
 */obj/
+*.nuget.props
+*.nuget.targets
 project.lock.json

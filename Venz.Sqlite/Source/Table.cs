@@ -24,6 +24,8 @@ namespace Venz.Sqlite
             Connection.RunInTransaction(action);
         }
 
+        public void Upsert(T record) => Upsert(new T[] { record });
+
         public void Upsert(IEnumerable<T> records)
         {
             EnsureTableExists();
