@@ -4,7 +4,11 @@ using Windows.Storage;
 using Windows.UI;
 using Windows.UI.Text;
 
+#if BACKGROUND
+namespace Venz.Background
+#else
 namespace Venz.UI.Xaml
+#endif
 {
     public class ApplicationSettings
     {

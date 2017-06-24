@@ -3,7 +3,11 @@ using Windows.ApplicationModel;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System.Profile;
 
+#if BACKGROUND
+namespace Venz.Background
+#else
 namespace Venz.Core
+#endif
 {
     public enum DeviceFamily { Desktop, Mobile, Unknown }
 
