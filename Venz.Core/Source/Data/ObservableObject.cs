@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using Windows.UI.Core;
-using Windows.UI.Xaml;
 
 namespace Venz.Data
 {
@@ -23,11 +21,11 @@ namespace Venz.Data
         {
             try
             {
-                var dispatcher = Window.Current?.Dispatcher;
+                var dispatcher = UI.Xaml.Application.Dispatcher;
                 if (dispatcher != null)
-                    await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => OnPropertyChangedInternal(propertyNames)).AsTask().ConfigureAwait(false);
+                    await dispatcher.RunAsync(() => OnPropertyChangedInternal(propertyNames)).ConfigureAwait(false);
                 else
-                    OnPropertyChanged(propertyNames);
+                    OnPropertyChangedInternal(propertyNames);
             }
             #if DEBUG
             catch (Exception exception)
