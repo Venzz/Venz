@@ -18,6 +18,7 @@ namespace Venz.Core
         public static String OsVersion { get; }
         public static Version ApplicationPackageVersion { get; }
         public static String ApplicationPackageName { get; }
+        public static String ApplicationPackageFamilyName { get; }
         public static String ApplicationPlatform { get; }
         public static DeviceFamily DeviceFamily { get; }
         public static String DeviceModel { get; }
@@ -43,6 +44,7 @@ namespace Venz.Core
             
             var package = Package.Current;
             ApplicationPackageName = package.DisplayName;
+            ApplicationPackageFamilyName = package.Id.FamilyName;
             ApplicationPackageVersion = new Version(package.Id.Version.Major, package.Id.Version.Minor, package.Id.Version.Build, package.Id.Version.Revision);
             ApplicationPlatform = AnalyticsInfo.VersionInfo.DeviceFamily;
 

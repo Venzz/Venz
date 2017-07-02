@@ -41,9 +41,6 @@ namespace Venz.UI.Xaml
         protected override void OnNavigatedTo(NavigationEventArgs args)
         {
             base.OnNavigatedTo(args);
-            if (DataContext == null)
-                throw new InvalidOperationException("DataContext is not set. DataContext is required for some features.");
-
             Navigation_OnNavigatedTo(args);
             BackKey_OnNavigatedTo(args);
         }
