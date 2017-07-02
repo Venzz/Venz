@@ -9,7 +9,7 @@ namespace Venz.UI.Xaml
         public PageContent()
         {
             InitializeComponent();
-            CustomContentLayerControl.SetBinding(BackgroundProperty, new Binding() { Path = new PropertyPath(nameof(Background)), Source = this });
+            CustomContentLayerControl.SetBinding(Panel.BackgroundProperty, new Binding() { Path = new PropertyPath(nameof(Background)), Source = this });
         }
 
         public Grid GetCustomContentLayer() => CustomContentLayerControl;
