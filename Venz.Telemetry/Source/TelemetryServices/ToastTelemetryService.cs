@@ -11,27 +11,27 @@ namespace Venz.Telemetry
 
         public void Start()
         {
-            ShowToast("TELEMETRY", "Application Launched");
+            ShowToast("Application Launched", "");
         }
 
         public void Finish()
         {
-            ShowToast("TELEMETRY", "Application Exit");
+            ShowToast("Application Exit", "");
         }
 
         public void LogEvent(String title)
         {
-            ShowToast("TELEMETRY", title);
+            ShowToast(title, "");
         }
 
         public void LogEvent(String title, String parameter, String value)
         {
-            ShowToast($"TELEMETRY >> {title}", $"{parameter}: {value}");
+            ShowToast(title, $"{parameter}: {value}");
         }
 
         public void LogException(String comment, Exception exception)
         {
-            ShowToast($"TELEMETRY >> {comment}", $"{exception.GetType().FullName}: {exception.Message}");
+            ShowToast(comment, $"{exception.GetType().FullName}: {exception.Message}");
         }
 
         public IAsyncAction LogDailyEventAsync(String title)
