@@ -1,0 +1,73 @@
+﻿<Core:Page
+    x:Class="Venz.UI.Xaml.Common.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+    xmlns:Core="using:Venz.UI.Xaml">
+
+    <Core:PageContent>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <Grid Margin="0,12,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="12,-8,0,40">
+                    <Run Text="Created by "/>
+                    <Run FontWeight="SemiBold" Text="Vitaliy Arsentyev"/>
+                </TextBlock>
+                <Button
+                    Grid.Row="1"
+                    Style="{StaticResource TextBlockButtonStyle}"
+                    Margin="6,0,0,40"
+                    Click="OnSendEmailButtonClicked">
+                    <Grid>
+                        <TextBlock
+                            Style="{StaticResource SubtitleTextBlockStyle}"
+                            Margin="0,-4,0,0"
+                            Text="Send email">
+                        </TextBlock>
+                        <TextBlock
+                            Style="{StaticResource BodyTextBlockStyle}"
+                            Margin="0,24,0,0"
+                            VerticalAlignment="Top"
+                            Foreground="{ThemeResource AppMediumBrush}"
+                            Text="Feedback, question, request feature">
+                        </TextBlock>
+                    </Grid>
+                </Button>
+                <Button
+                    Grid.Row="4"
+                    Style="{StaticResource TextBlockButtonStyle}"
+                    Margin="6,0,0,40"
+                    Click="OnAllAppsButtonClicked">
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="All apps"/>
+                </Button>
+                <TextBlock
+                    Grid.Row="2"
+                    Style="{StaticResource TitleTextBlockStyle}"
+                    Margin="12,0,0,0"
+                    Visibility="Collapsed"
+                    Text="My apps">
+                </TextBlock>
+                <ItemsControl
+                    Grid.Row="3"
+                    Margin="0,0,0,31"
+                    Visibility="Collapsed"
+                    ItemsSource="{Binding Apps}">
+                </ItemsControl>
+                <ContentPresenter
+                    Grid.Row="5"
+                    x:Name="ExtendedContentControl">
+                </ContentPresenter>
+            </Grid>
+        </ScrollViewer>
+    </Core:PageContent>
+</Core:Page>

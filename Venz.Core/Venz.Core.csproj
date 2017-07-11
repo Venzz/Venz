@@ -107,6 +107,12 @@
     <Compile Include="Source\Data\Conveyor.cs" />
     <Compile Include="Source\Data\ObservableList.cs" />
     <Compile Include="Source\Data\ObservableObject.cs" />
+    <Compile Include="Source\UI\Xaml\Common\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UI\Xaml\Common\ChangesPage.xaml.cs">
+      <DependentUpon>ChangesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\UI\Animation\DelayedValueSetterAnimation.cs" />
     <Compile Include="Source\UI\Animation\DoubleBasedAnimation.cs" />
     <Compile Include="Source\UI\Animation\Extensions\AnimationProperties.cs" />
@@ -140,6 +146,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Source\UI\Xaml\Common\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Source\UI\Xaml\Common\ChangesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Source\UI\Xaml\PageContent\PageContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
