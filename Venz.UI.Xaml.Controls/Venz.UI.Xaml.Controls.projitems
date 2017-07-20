@@ -12,12 +12,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Converters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.EmptyListMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.EmptyListContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\Image.xaml.cs">
       <DependentUpon>Image.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.State.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.EmptyListMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.EmptyListContent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ProgressRing.xaml.cs">
       <DependentUpon>ProgressRing.xaml</DependentUpon>
     </Compile>

@@ -11,13 +11,16 @@ namespace Venz.UI.Xaml.Controls
     public partial class GridView: global::Windows.UI.Xaml.Controls.GridView
     {
         private ItemsSourceModificationListener ItemsSourceModificationListener = new ItemsSourceModificationListener();
-        private TaskCompletionSource<Boolean> LoadedStateAwaiter = new TaskCompletionSource<Boolean>();
         private Grid ControlTemplateGrid;
+        private ContentControl HeaderContentControl;
+
+        protected TaskCompletionSource<Boolean> LoadedStateAwaiter = new TaskCompletionSource<Boolean>();
 
         public GridView()
         {
             ItemsSourceModificationListener.Changed += (sender, count) => OnItemsSourceChanged(count);
             RegisterPropertyChangedCallback(ItemsSourceProperty, (sender, property) => ItemsSourceModificationListener.ChangeCollection(ItemsSource));
+            RegisterPropertyChangedCallback(HeaderProperty, (sender, property) => OnHeaderChanged(Header));
             SizeChanged += OnSizeChanged;
             Loaded += OnLoaded;
 
@@ -35,16 +38,24 @@ namespace Venz.UI.Xaml.Controls
                 return;
 
             if (ControlTemplateGrid == null)
-            {
                 ControlTemplateGrid = this.TryGetVisualTreeChildAt<Grid>(4);
-                if (ControlTemplateGrid != null)
-                    OnTemplateControlsAvailable(ControlTemplateGrid);
-            }
+            if (HeaderContentControl == null)
+                HeaderContentControl = this.TryGetVisualTreeChildAt<ContentControl>(7);
+
+            if (ControlTemplateGrid != null)
+                OnTemplateControlsAvailable(ControlTemplateGrid);
+
+            GridView_OnSizeChanged(args);
         }
 
         protected virtual void OnItemsSourceChanged(UInt32 newItemsCount)
         {
             GridView_OnItemsSourceChanged(newItemsCount);
+        }
+
+        private void OnHeaderChanged(Object newHeader)
+        {
+            GridView_OnHeaderChanged(newHeader);
         }
 
         protected virtual void OnTemplateControlsAvailable(Grid controlTemplateGrid)

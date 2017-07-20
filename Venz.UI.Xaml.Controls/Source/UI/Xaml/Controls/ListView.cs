@@ -13,11 +13,13 @@ namespace Venz.UI.Xaml.Controls
         private ItemsSourceModificationListener ItemsSourceModificationListener = new ItemsSourceModificationListener();
         private TaskCompletionSource<Boolean> LoadedStateAwaiter = new TaskCompletionSource<Boolean>();
         private Grid ControlTemplateGrid;
+        private ContentControl HeaderContentControl;
 
         public ListView()
         {
             ItemsSourceModificationListener.Changed += (sender, count) => OnItemsSourceChanged(count);
             RegisterPropertyChangedCallback(ItemsSourceProperty, (sender, property) => ItemsSourceModificationListener.ChangeCollection(ItemsSource));
+            RegisterPropertyChangedCallback(HeaderProperty, (sender, property) => OnHeaderChanged(Header));
             SizeChanged += OnSizeChanged;
             Loaded += OnLoaded;
 
@@ -35,16 +37,24 @@ namespace Venz.UI.Xaml.Controls
                 return;
 
             if (ControlTemplateGrid == null)
-            {
                 ControlTemplateGrid = this.TryGetVisualTreeChildAt<Grid>(4);
-                if (ControlTemplateGrid != null)
-                    OnTemplateControlsAvailable(ControlTemplateGrid);
-            }
+            if (HeaderContentControl == null)
+                HeaderContentControl = this.TryGetVisualTreeChildAt<ContentControl>(7);
+
+            if (ControlTemplateGrid != null)
+                OnTemplateControlsAvailable(ControlTemplateGrid);
+
+            ListView_OnSizeChanged(args);
         }
 
         protected virtual void OnItemsSourceChanged(UInt32 newItemsCount)
         {
             ListView_OnItemsSourceChanged(newItemsCount);
+        }
+
+        private void OnHeaderChanged(Object newHeader)
+        {
+            ListView_OnHeaderChanged(newHeader);
         }
 
         protected virtual void OnTemplateControlsAvailable(Grid controlTemplateGrid)
