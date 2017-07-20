@@ -1,0 +1,15 @@
+﻿<UserControl
+    x:Class="Venz.UI.Xaml.Controls.SplitViewMenuHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="2,0,0,0" Orientation="Horizontal" Background="Transparent">
+        <FontIcon Glyph="&#xE700;" FontSize="20"/>
+        <TextBlock
+            x:Name="TextControl"
+            Margin="24,0,0,0"
+            FontWeight="SemiBold"
+            VerticalAlignment="Center">
+        </TextBlock>
+    </StackPanel>
+</UserControl>

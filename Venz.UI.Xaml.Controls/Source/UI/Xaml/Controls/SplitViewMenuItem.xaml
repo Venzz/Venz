@@ -1,0 +1,15 @@
+﻿<UserControl
+    x:Class="Venz.UI.Xaml.Controls.SplitViewMenuItem"
+    x:Name="Control"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <StackPanel Margin="2,0,0,0" Orientation="Horizontal" Background="Transparent">
+        <ContentPresenter Content="{Binding Icon, ElementName=Control, Mode=OneTime}"/>
+        <TextBlock
+            Margin="24,0,0,0"
+            VerticalAlignment="Center"
+            Text="{Binding Text, ElementName=Control, Mode=OneTime}">
+        </TextBlock>
+    </StackPanel>
+</UserControl>
