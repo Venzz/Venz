@@ -9,21 +9,23 @@ namespace Venz.Extensions
     {
         public static T TryGetVisualTreeChildAt<T>(this DependencyObject source, UInt32 level, UInt32 position = 0) where T: DependencyObject
         {
-            var i = 0;
-            var child = source;
-            while (i++ < level)
-            {
-                if (VisualTreeHelper.GetChildrenCount(child) == 0)
-                    return null;
+            if (level == 0)
+                return source as T;
 
-                child = VisualTreeHelper.GetChild(child, 0);
+            var i = 0;
+            var previousLevel = source;
+            while (i++ < level - 1)
+            {
+                if (VisualTreeHelper.GetChildrenCount(previousLevel) == 0)
+                    return null;
+                previousLevel = VisualTreeHelper.GetChild(previousLevel, 0);
             }
 
-            if (VisualTreeHelper.GetChildrenCount(child) <= position)
+            if (VisualTreeHelper.GetChildrenCount(previousLevel) <= position)
                 return null;
 
-            child = VisualTreeHelper.GetChild(child, (Int32)position);
-            return (child is T) ? (T)child : null;
+            var child = VisualTreeHelper.GetChild(previousLevel, (Int32)position);
+            return child as T;
         }
 
         public static IReadOnlyCollection<T> TryFindVisualTreeChildren<T>(this DependencyObject source) where T: DependencyObject
@@ -47,9 +49,9 @@ namespace Venz.Extensions
                 }
                 else
                 {
-                    if ((sourceChild is Windows.UI.Xaml.Controls.ContentPresenter) && (((Windows.UI.Xaml.Controls.ContentPresenter)sourceChild).Content is DependencyObject))
+                    if ((sourceChild is Windows.UI.Xaml.Controls.ContentPresenter contentPresenter) && (contentPresenter.Content is DependencyObject content))
                     {
-                        sourceChild = (DependencyObject)((Windows.UI.Xaml.Controls.ContentPresenter)sourceChild).Content;
+                        sourceChild = content;
                         if (sourceChild is T)
                             children.Add((T)sourceChild);
                     }
@@ -57,6 +59,29 @@ namespace Venz.Extensions
                 }
             }
             return children;
+        }
+
+        public static String PrintVisualTree(this DependencyObject source, Int32 level = 0)
+        {
+            var sourceElement = source;
+            if ((sourceElement is Windows.UI.Xaml.Controls.ContentPresenter contentPresenter) && (contentPresenter.Content is DependencyObject content))
+                sourceElement = content;
+            if (sourceElement == null)
+                return null;
+
+            var indent = "";
+            for (var i = 0; i < level; i++)
+                indent += "    ";
+
+            var visualTree = "";
+            var childCount = VisualTreeHelper.GetChildrenCount(sourceElement);
+            for (var i = 0; i < childCount; i++)
+            {
+                var sourceChild = VisualTreeHelper.GetChild(sourceElement, i);
+                visualTree += $"{indent}{sourceChild.GetType().FullName}\n";
+                visualTree += PrintVisualTree(sourceChild, level + 1);
+            }
+            return visualTree;
         }
     }
 }
