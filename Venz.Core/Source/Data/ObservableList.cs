@@ -72,15 +72,28 @@ namespace Venz.Data
             CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, removedItem, newIndex));
         }
 
-        public Boolean Remove(T item) => throw new NotImplementedException();
+        public Boolean Remove(T item)
+        {
+            lock (SyncRoot)
+            {
+                var index = IndexOf(item);
+                if (index == -1)
+                    return false;
+                RemoveAt(index);
+                return true;
+            }
+        }
 
-        public void Remove(Object value) => throw new NotImplementedException();
+        public void Remove(Object value) => Remove((T)value);
 
         public void RemoveAt(Int32 index)
         {
-            var removedItem = Items[index];
-            Items.RemoveAt(index);
-            CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removedItem, index));
+            lock (SyncRoot)
+            {
+                var removedItem = Items[index];
+                Items.RemoveAt(index);
+                CollectionChanged(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, removedItem, index));
+            }
         }
 
         public void Clear() => throw new NotImplementedException();
