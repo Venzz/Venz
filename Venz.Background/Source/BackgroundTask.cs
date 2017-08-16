@@ -13,7 +13,6 @@ namespace Venz.Background
             BackgroundApplication = backgroundApplication;
             taskInstance.Canceled += OnTaskCanceled;
             await BackgroundApplication.StartAsync(this, taskInstance.TriggerDetails);
-            Deferral.Complete();
         }
 
         private void OnTaskCanceled(IBackgroundTaskInstance sender, BackgroundTaskCancellationReason reason)
