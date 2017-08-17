@@ -108,6 +108,9 @@
     <Compile Include="Source\Email\Email.cs" />
     <Compile Include="Source\InappPurchase\InappPurchase.cs" />
     <Compile Include="Source\InappPurchase\InappPurchaseItem.cs" />
+    <Compile Include="Source\InappPurchase\InappPurchasePage.xaml.cs">
+      <DependentUpon>InappPurchasePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\MessageDialog\MessageDialog.cs" />
     <Compile Include="Source\PlatformVersion.cs" />
     <Compile Include="Source\ServiceLauncher\ServiceLauncher.cs" />
@@ -120,6 +123,12 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>5.3.3</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Source\InappPurchase\InappPurchasePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

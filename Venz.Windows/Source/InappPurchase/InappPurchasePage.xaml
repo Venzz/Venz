@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="Venz.Windows.InappPurchasePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <CollectionViewSource x:Key="ContactsView" IsSourceGrouped="true" Source="{Binding InappPurchase.AvailableItems, Mode=OneTime}"/>
+        </Grid.Resources>
+        <TextBlock
+            Style="{StaticResource SubheaderTextBlockStyle}"
+            Margin="12,0,12,20"
+            Text="{Binding Header, Mode=OneTime, FallbackValue=asdasd}">
+        </TextBlock>
+        <TextBlock
+            Grid.Row="1"
+            Style="{StaticResource BodyTextBlockStyle}"
+            Margin="12,0,12,20"
+            Text="{Binding Description, Mode=OneTime, FallbackValue=asdadsasd}">
+        </TextBlock>
+        <ListView
+            Grid.Row="2"
+            IsItemClickEnabled="True"
+            ItemsSource="{Binding InappPurchase.AvailableItems, Mode=OneTime}"
+            ItemClick="OnItemClicked">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="56">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="52"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Top"
+                            Height="44"
+                            Fill="{ThemeResource SystemControlBackgroundAccentBrush}">
+                        </Rectangle>
+                        <Image
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Top"
+                            Height="44"
+                            Source="ms-appx:///Resources/Package/Square_44x44.png">
+                        </Image>
+                        <TextBlock
+                            Grid.Column="1"
+                            Style="{StaticResource SubheaderTextBlockStyle}"
+                            Margin="0,-12,0,0"
+                            TextWrapping="NoWrap"
+                            Text="{Binding Title, Mode=OneTime, FallbackValue=Шрифты}">
+                        </TextBlock>
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="0,27,0,0"
+                            TextWrapping="NoWrap"
+                            Style="{StaticResource BodyTextBlockStyle}"
+                            Foreground="{ThemeResource SystemControlBackgroundBaseMediumBrush}"
+                            Text="{Binding Price, Mode=OneTime, FallbackValue=99$}">
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="12,12,12,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <Bold/>
+            <Bold/>
+        </ListView>
+    </Grid>
+</Page>
