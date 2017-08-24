@@ -1,5 +1,6 @@
 using System;
 using Windows.ApplicationModel;
+using Windows.Foundation.Metadata;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System.Profile;
 
@@ -71,5 +72,7 @@ namespace Venz.Core
                 DeviceModel = "Uspecified Model";
             }
         }
+
+        public static Boolean HasBuild14393Api => ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 3, 0);
     }
 }

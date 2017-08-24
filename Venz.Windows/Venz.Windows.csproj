@@ -112,7 +112,6 @@
       <DependentUpon>InappPurchasePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\MessageDialog\MessageDialog.cs" />
-    <Compile Include="Source\PlatformVersion.cs" />
     <Compile Include="Source\ServiceLauncher\ServiceLauncher.cs" />
     <EmbeddedResource Include="Properties\Venz.Windows.rd.xml" />
   </ItemGroup>
