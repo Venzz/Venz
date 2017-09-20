@@ -106,7 +106,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\TaskExtensions.cs" />
     <Compile Include="Source\YandexMetricaTelemetryService.cs" />
-    <EmbeddedResource Include="Properties\Venz.Telemetry.Yandex.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Venz.Telemetry\Venz.Telemetry.csproj">

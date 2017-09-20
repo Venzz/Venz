@@ -118,7 +118,6 @@
     <Compile Include="Source\TelemetryServices\InMemoryTelemetryService.cs" />
     <Compile Include="Source\TelemetryServices\SalesforceTelemetryService.cs" />
     <Compile Include="Source\TelemetryServices\StorageFileTelemetryService.cs" />
-    <EmbeddedResource Include="Properties\Venz.Telemetry.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Venz.Extensions\Venz.Extensions.csproj">
