@@ -13,6 +13,10 @@ namespace Venz.Extensions
             {
                 return JsonValue.CreateStringValue("null");
             }
+            if (obj is Type)
+            {
+                return JsonValue.CreateStringValue(obj.ToString());
+            }
 
             var typeInfo = obj.GetType().GetTypeInfo();
             if (obj is IJsonConvertible)
