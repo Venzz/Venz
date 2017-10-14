@@ -112,6 +112,7 @@
     <Compile Include="Source\AsyncOperation.cs" />
     <Compile Include="Source\AsyncOperationMode.cs" />
     <Compile Include="Source\DeferralSupportedEventArgs.cs" />
+    <Compile Include="Source\PeriodicOperation.cs" />
     <EmbeddedResource Include="Properties\Venz.Async.rd.xml" />
   </ItemGroup>
   <ItemGroup>
