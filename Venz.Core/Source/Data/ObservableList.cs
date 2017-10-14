@@ -96,6 +96,8 @@ namespace Venz.Data
             }
         }
 
+        protected void OnCollectionChanged(NotifyCollectionChangedEventArgs args) => CollectionChanged(this, args);
+
         public void Clear() => throw new NotImplementedException();
 
         public Int32 IndexOf(T item) => Items.IndexOf(item);

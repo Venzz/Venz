@@ -18,7 +18,7 @@ namespace Venz.UI.Xaml.Controls
 
         public GridView()
         {
-            ItemsSourceModificationListener.Changed += (sender, count) => OnItemsSourceChanged(count);
+            ItemsSourceModificationListener.Changed += (sender, args) => OnItemsSourceChanged(args);
             RegisterPropertyChangedCallback(ItemsSourceProperty, (sender, property) => ItemsSourceModificationListener.ChangeCollection(ItemsSource));
             RegisterPropertyChangedCallback(HeaderProperty, (sender, property) => OnHeaderChanged(Header));
             SizeChanged += OnSizeChanged;
@@ -48,9 +48,10 @@ namespace Venz.UI.Xaml.Controls
             GridView_OnSizeChanged(args);
         }
 
-        protected virtual void OnItemsSourceChanged(UInt32 newItemsCount)
+        protected virtual void OnItemsSourceChanged(ItemsSourceModificationListener.Args args)
         {
-            GridView_OnItemsSourceChanged(newItemsCount);
+            if (args.CountChanged)
+                GridView_OnItemsSourceChanged(args.NewCount);
         }
 
         private void OnHeaderChanged(Object newHeader)
