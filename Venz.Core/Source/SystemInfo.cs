@@ -1,5 +1,6 @@
 using System;
 using Windows.ApplicationModel;
+using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 using Windows.System.Profile;
@@ -14,6 +15,8 @@ namespace Venz.Core
 
     public enum DeviceType { Real, Emulator }
 
+    public enum DeviceScreenType { Phone, PhoneInContinuumMode, Tablet, Desktop }
+
     public static class SystemInfo
     {
         public static String OsVersion { get; }
@@ -25,6 +28,7 @@ namespace Venz.Core
         public static String DeviceModel { get; }
         public static String DeviceManufacturer { get; }
         public static DeviceType DeviceType { get; }
+        public static Boolean HasBuild14393Api => ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 3, 0);
 
         static SystemInfo()
         {
@@ -73,6 +77,11 @@ namespace Venz.Core
             }
         }
 
-        public static Boolean HasBuild14393Api => ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 3, 0);
+        public static DeviceScreenType GetDeviceScreenType(Size availableSize)
+        {
+            if ((DeviceFamily == DeviceFamily.Mobile) && ((availableSize.Width < 450) && (availableSize.Height < 800) || (availableSize.Width < 800) && (availableSize.Height < 450)))
+                return DeviceScreenType.Phone;
+            return DeviceScreenType.Desktop;
+        }
     }
 }
