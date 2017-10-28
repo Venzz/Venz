@@ -14,6 +14,7 @@ namespace Venz.UI.Xaml.Controls
         private TaskCompletionSource<Boolean> LoadedStateAwaiter = new TaskCompletionSource<Boolean>();
         private Grid ControlTemplateGrid;
         private ContentControl HeaderContentControl;
+        private ScrollViewer ScrollViewerControl;
 
         public ListView()
         {
@@ -37,14 +38,26 @@ namespace Venz.UI.Xaml.Controls
                 return;
 
             if (ControlTemplateGrid == null)
+            {
                 ControlTemplateGrid = this.TryGetVisualTreeChildAt<Grid>(4);
+                if (ControlTemplateGrid != null)
+                    OnTemplateControlsAvailable(ControlTemplateGrid);
+            }
             if (HeaderContentControl == null)
+            {
                 HeaderContentControl = this.TryGetVisualTreeChildAt<ContentControl>(7);
-
-            if (ControlTemplateGrid != null)
-                OnTemplateControlsAvailable(ControlTemplateGrid);
-
+            }
+            if (ScrollViewerControl == null)
+            {
+                ScrollViewerControl = this.TryGetVisualTreeChildAt<ScrollViewer>(2);
+                ScrollViewerControl.ViewChanged += (s, a) => OnViewChanged(ScrollViewerControl, a);
+            }
+            
             ListView_OnSizeChanged(args);
+        }
+
+        protected virtual void OnViewChanged(ScrollViewer sender, ScrollViewerViewChangedEventArgs args)
+        {
         }
 
         protected virtual void OnItemsSourceChanged(ItemsSourceModificationListener.Args args)
