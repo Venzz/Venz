@@ -44,6 +44,17 @@ namespace Venz.UI.Xaml.Controls
             set => SetValue(DisablePixelDecodingProperty, value);
         }
 
+        public static readonly DependencyProperty StretchProperty =
+            DependencyProperty.Register("Stretch", typeof(Stretch), typeof(Image), new PropertyMetadata(Stretch.Uniform));
+
+        public Stretch Stretch
+        {
+            get { return (Stretch)GetValue(StretchProperty); }
+            set { SetValue(StretchProperty, value); }
+        }
+
+
+
         public Object PictureRequestId { get; set; }
         public ImageStreamContent StreamContent { private get { return _StreamContent; } set { _StreamContent = value; OnImageContentChanged(value); } }
         public ImageUriContent UriContent { private get { return _UriContent; } set { _UriContent = value; OnImageContentChanged(value); } }
@@ -60,7 +71,7 @@ namespace Venz.UI.Xaml.Controls
 
         private void OnSizeChanged(Object sender, SizeChangedEventArgs args)
         {
-            if (!LastAppliedSize.IsVisible() || (Math.Abs(LastAppliedSize.Width - args.NewSize.Width) > 50) || (Math.Abs(LastAppliedSize.Height - args.NewSize.Height) > 50))
+            if (!LastAppliedSize.IsVisible() || (Math.Abs(LastAppliedSize.Width - args.NewSize.Width) > 100) || (Math.Abs(LastAppliedSize.Height - args.NewSize.Height) > 100))
             {
                 TryApplyImageContent();
                 LastAppliedSize = args.NewSize;
@@ -100,7 +111,6 @@ namespace Venz.UI.Xaml.Controls
                 if (!DisablePixelDecoding && ((DecodePixelWidthOverride > 0) || (DecodePixelHeightOverride > 0)))
                 {
                     if (DecodePixelWidthOverride > 0)
-                        bitmapImage.DecodePixelType = DecodePixelType.Logical;
                         bitmapImage.DecodePixelWidth = DecodePixelWidthOverride;
                     if (DecodePixelHeightOverride > 0)
                         bitmapImage.DecodePixelHeight = DecodePixelHeightOverride;
