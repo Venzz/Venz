@@ -85,7 +85,10 @@ namespace Venz.UI.Xaml.Controls
             _UriContent = null;
             IsImageSet = streamContent != null;
             if (streamContent == null)
+            {
                 ImageControl.Source = null;
+                LastAppliedSize = new Size();
+            }
             TryApplyImageContent();
             OnBackgroundChanged(Background);
         }
@@ -95,7 +98,10 @@ namespace Venz.UI.Xaml.Controls
             _StreamContent = null;
             IsImageSet = uriContent != null;
             if (uriContent == null)
+            {
                 ImageControl.Source = null;
+                LastAppliedSize = new Size();
+            }
             TryApplyImageContent();
             OnBackgroundChanged(Background);
         }
