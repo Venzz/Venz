@@ -29,7 +29,8 @@ namespace Venz.UI.Xaml.Controls
 
         protected virtual void OnLoaded(Object sender, RoutedEventArgs args)
         {
-            LoadedStateAwaiter.SetResult(true);
+            if (!LoadedStateAwaiter.Task.IsCompleted)
+                LoadedStateAwaiter.SetResult(true);
         }
 
         protected virtual void OnSizeChanged(Object sender, SizeChangedEventArgs args)
