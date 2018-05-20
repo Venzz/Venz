@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Converters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\ControlsExtensions\PasswordBox.UpdatablePassword.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\GridView.cs" />
