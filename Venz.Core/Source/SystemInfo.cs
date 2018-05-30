@@ -1,9 +1,7 @@
 using System;
 using Windows.ApplicationModel;
 using Windows.Foundation;
-using Windows.Foundation.Metadata;
 using Windows.Security.ExchangeActiveSyncProvisioning;
-using Windows.System.Profile;
 
 #if BACKGROUND
 namespace Venz.Background
@@ -23,35 +21,22 @@ namespace Venz.Core
         public static Version ApplicationPackageVersion { get; }
         public static String ApplicationPackageName { get; }
         public static String ApplicationPackageFamilyName { get; }
-        public static String ApplicationPlatform { get; }
+        public static String ApplicationPlatform { get; } = "Windows.Mobile.81";
         public static DeviceFamily DeviceFamily { get; }
         public static String DeviceModel { get; }
         public static String DeviceManufacturer { get; }
         public static DeviceType DeviceType { get; }
-        public static Boolean HasBuild14393Api => ApiInformation.IsApiContractPresent("Windows.Foundation.UniversalApiContract", 3, 0);
+        public static Boolean HasBuild14393Api => false;
 
         static SystemInfo()
         {
-            var version = UInt64.Parse(AnalyticsInfo.VersionInfo.DeviceFamilyVersion);
-            OsVersion = $"{(version & 0xFFFF000000000000L) >> 48}.{(version & 0x0000FFFF00000000L) >> 32}.{(version & 0x00000000FFFF0000L) >> 16}.{(version & 0x000000000000FFFFL)}";
-            switch (AnalyticsInfo.VersionInfo.DeviceFamily)
-            {
-                case "Windows.Desktop":
-                    DeviceFamily = DeviceFamily.Desktop;
-                    break;
-                case "Windows.Mobile":
-                    DeviceFamily = DeviceFamily.Mobile;
-                    break;
-                default:
-                    DeviceFamily = DeviceFamily.Unknown;
-                    break;
-            }
-            
+            OsVersion = "8.1";
+            DeviceFamily = DeviceFamily.Mobile;
+
             var package = Package.Current;
-            ApplicationPackageName = package.DisplayName;
+            ApplicationPackageName = "Property isn't supported.";
             ApplicationPackageFamilyName = package.Id.FamilyName;
             ApplicationPackageVersion = new Version(package.Id.Version.Major, package.Id.Version.Minor, package.Id.Version.Build, package.Id.Version.Revision);
-            ApplicationPlatform = AnalyticsInfo.VersionInfo.DeviceFamily;
 
             var clientDeviceInformation = new EasClientDeviceInformation();
             DeviceManufacturer = clientDeviceInformation.SystemManufacturer;
@@ -59,13 +44,6 @@ namespace Venz.Core
             if (DeviceModel == "Virtual")
             {
                 DeviceType = DeviceType.Emulator;
-            }
-            else if (DeviceFamily == DeviceFamily.Desktop)
-            {
-                if (DeviceManufacturer == "System manufacturer")
-                    DeviceManufacturer = "PC";
-                if (DeviceModel == "System Product Name")
-                    DeviceModel = "PC";
             }
             if (String.IsNullOrWhiteSpace(DeviceManufacturer))
             {

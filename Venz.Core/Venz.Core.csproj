@@ -1,153 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{13BD17B3-DACF-4D01-9100-754B307EAEF5}</ProjectGuid>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C830A03C-B521-4355-A5FD-0DBB807E5011}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Venz.Core</RootNamespace>
     <AssemblyName>Venz.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.10240.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
-    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectTypeGuids>{76F1466A-8B6D-4E39-A767-685A06062A39};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
-    <Optimize>true</Optimize>
-    <NoWarn>;2008</NoWarn>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
-    <PlatformTarget>ARM</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\ARM\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <PlatformTarget>ARM</PlatformTarget>
     <OutputPath>bin\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <PlatformTarget>x64</PlatformTarget>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <PlatformTarget>x64</PlatformTarget>
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
     <Optimize>true</Optimize>
     <NoWarn>;2008</NoWarn>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\Data\Conveyor.cs" />
-    <Compile Include="Source\Data\IncrementalLoadingCollection.Interface.cs" />
-    <Compile Include="Source\Data\IncrementalLoadingCollection.cs" />
-    <Compile Include="Source\Data\ObservableList.cs" />
-    <Compile Include="Source\Data\ObservableObject.cs" />
-    <Compile Include="Source\UI\Xaml\Common\AboutPage.xaml.cs">
-      <DependentUpon>AboutPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Source\UI\Xaml\Common\ChangesPage.xaml.cs">
-      <DependentUpon>ChangesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Source\UI\Animation\DelayedValueSetterAnimation.cs" />
-    <Compile Include="Source\UI\Animation\DoubleBasedAnimation.cs" />
-    <Compile Include="Source\UI\Animation\Extensions\AnimationProperties.cs" />
-    <Compile Include="Source\UI\Animation\Extensions\ExponentialEase.cs" />
-    <Compile Include="Source\UI\Animation\ValueSetterAnimation.cs" />
-    <Compile Include="Source\UI\Xaml\OneWayValueConverter.cs" />
-    <Compile Include="Source\UI\Xaml\Application\Application.Settings.cs" />
-    <Compile Include="Source\SystemInfo.cs" />
-    <Compile Include="Source\UI\Xaml\Application\Application.Dispatcher.cs" />
-    <Compile Include="Source\UI\Xaml\Application\Application.cs" />
-    <Compile Include="Source\UI\Xaml\Frame\Frame.cs" />
-    <Compile Include="Source\UI\Xaml\Frame\Frame.Navigation.cs" />
-    <Compile Include="Source\UI\Xaml\OverlaidContent\IOverlaidContentTransition.cs" />
-    <Compile Include="Source\UI\Xaml\OverlaidContent\OverlaidContent.cs" />
-    <Compile Include="Source\UI\Xaml\PageContent\PageContent.xaml.cs">
-      <DependentUpon>PageContent.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Source\UI\Xaml\Page\Interface\IBackStackResettablePage.cs" />
-    <Compile Include="Source\UI\Xaml\Page\Interface\IBackStackRemovablePage.cs" />
-    <Compile Include="Source\UI\Xaml\Page\Page.cs" />
-    <Compile Include="Source\UI\Xaml\Page\Page.BackKey.cs" />
-    <Compile Include="Source\UI\Xaml\Page\Page.Content.cs" />
-    <Compile Include="Source\UI\Xaml\Page\Page.Navigation.cs" />
-    <Compile Include="Source\UI\Xaml\Page\Page.Settings.cs" />
-    <EmbeddedResource Include="Properties\Venz.Core.rd.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Venz.Extensions\Venz.Extensions.csproj">
-      <Project>{04bb7d9d-6f87-4b6d-b1bc-b9fce6c10ce6}</Project>
-      <Name>Venz.Extensions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Page Include="Source\UI\Xaml\Common\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -157,26 +92,78 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Source\UI\Xaml\PageContent\PageContent.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <PropertyGroup>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.3.3</Version>
-    </PackageReference>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Data\Conveyor.cs" />
+    <Compile Include="Source\Data\IncrementalLoadingCollection.cs" />
+    <Compile Include="Source\Data\IncrementalLoadingCollection.Interface.cs" />
+    <Compile Include="Source\Data\ObservableList.cs" />
+    <Compile Include="Source\Data\ObservableObject.cs" />
+    <Compile Include="Source\SystemInfo.cs" />
+    <Compile Include="Source\UI\Animation\DelayedValueSetterAnimation.cs" />
+    <Compile Include="Source\UI\Animation\DoubleBasedAnimation.cs" />
+    <Compile Include="Source\UI\Animation\Extensions\AnimationProperties.cs" />
+    <Compile Include="Source\UI\Animation\Extensions\ExponentialEase.cs" />
+    <Compile Include="Source\UI\Animation\ValueSetterAnimation.cs" />
+    <Compile Include="Source\UI\Xaml\Application\Application.cs" />
+    <Compile Include="Source\UI\Xaml\Application\Application.Dispatcher.cs" />
+    <Compile Include="Source\UI\Xaml\Application\Application.Settings.cs" />
+    <Compile Include="Source\UI\Xaml\Common\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UI\Xaml\Common\ChangesPage.xaml.cs">
+      <DependentUpon>ChangesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UI\Xaml\Frame\Frame.cs" />
+    <Compile Include="Source\UI\Xaml\Frame\Frame.Navigation.cs" />
+    <Compile Include="Source\UI\Xaml\OneWayValueConverter.cs" />
+    <Compile Include="Source\UI\Xaml\OverlaidContent\IOverlaidContentTransition.cs" />
+    <Compile Include="Source\UI\Xaml\OverlaidContent\OverlaidContent.cs" />
+    <Compile Include="Source\UI\Xaml\PageContent\PageContent.xaml.cs">
+      <DependentUpon>PageContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UI\Xaml\Page\Interface\IBackStackRemovablePage.cs" />
+    <Compile Include="Source\UI\Xaml\Page\Interface\IBackStackResettablePage.cs" />
+    <Compile Include="Source\UI\Xaml\Page\Page.BackKey.cs" />
+    <Compile Include="Source\UI\Xaml\Page\Page.Content.cs" />
+    <Compile Include="Source\UI\Xaml\Page\Page.cs" />
+    <Compile Include="Source\UI\Xaml\Page\Page.Navigation.cs" />
+    <Compile Include="Source\UI\Xaml\Page\Page.Settings.cs" />
   </ItemGroup>
-  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
-    <VisualStudioVersion>14.0</VisualStudioVersion>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Venz.Extensions\Venz.Extensions.csproj">
+      <Project>{d3688fb8-f143-45f2-abfe-661b0310a438}</Project>
+      <Name>Venz.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Venz.UwpBridge\Venz.UwpBridge.csproj">
+      <Project>{bd1c94b4-78c9-45c6-b44b-78137ce84458}</Project>
+      <Name>Venz.UwpBridge</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
