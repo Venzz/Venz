@@ -60,7 +60,7 @@ namespace Venz.Async
                 }
                 else if ((Mode == AsyncOperationMode.OneTime) && ActiveOperation.IsCompleted)
                 {
-                    return Task.CompletedTask;
+                    return Task.FromResult<Object>(null);
                 }
                 else if (ActiveOperation.IsCompleted || ActiveOperation.IsCanceled || ActiveOperation.IsFaulted)
                 {
