@@ -34,7 +34,7 @@ namespace Venz.UI.Xaml.Controls
         public ProgressRing()
         {
             InitializeComponent();
-            RegisterPropertyChangedCallback(VisibilityProperty, (sender, args) => OnVisibilityChanged(Visibility));
+            UniversalDependencyObject.RegisterPropertyChangedCallback(this, VisibilityProperty, nameof(Visibility), (sender, args) => OnVisibilityChanged(Visibility));
         }
 
         private void OnLabelChanged(String value) => Apply(value, Size);

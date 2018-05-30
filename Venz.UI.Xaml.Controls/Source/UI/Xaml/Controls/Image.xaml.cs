@@ -64,7 +64,7 @@ namespace Venz.UI.Xaml.Controls
         public Image()
         {
             InitializeComponent();
-            RegisterPropertyChangedCallback(BackgroundProperty, (sender, property) => OnBackgroundChanged(Background));
+            UniversalDependencyObject.RegisterPropertyChangedCallback(this, BackgroundProperty, nameof(Background), (sender, property) => OnBackgroundChanged(Background));
             if (!DesignMode.DesignModeEnabled)
                 SizeChanged += OnSizeChanged;
         }

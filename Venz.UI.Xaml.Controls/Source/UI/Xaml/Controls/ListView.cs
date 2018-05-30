@@ -19,8 +19,8 @@ namespace Venz.UI.Xaml.Controls
         public ListView()
         {
             ItemsSourceModificationListener.Changed += (sender, args) => OnItemsSourceChanged(args);
-            RegisterPropertyChangedCallback(ItemsSourceProperty, (sender, property) => ItemsSourceModificationListener.ChangeCollection(ItemsSource));
-            RegisterPropertyChangedCallback(HeaderProperty, (sender, property) => OnHeaderChanged(Header));
+            UniversalDependencyObject.RegisterPropertyChangedCallback(this, ItemsSourceProperty, nameof(ItemsSource), (sender, property) => ItemsSourceModificationListener.ChangeCollection(ItemsSource));
+            UniversalDependencyObject.RegisterPropertyChangedCallback(this, HeaderProperty, nameof(Header), (sender, property) => OnHeaderChanged(Header));
             SizeChanged += OnSizeChanged;
             Loaded += OnLoaded;
 

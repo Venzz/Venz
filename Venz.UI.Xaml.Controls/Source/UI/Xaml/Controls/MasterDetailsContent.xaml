@@ -12,17 +12,15 @@
         </Grid.ColumnDefinitions>
         <Rectangle
             x:Name="MasterBackgroundControl"
-            x:DeferLoadStrategy="Lazy">
+            Fill="{Binding MasterBackground, Mode=OneWay}">
         </Rectangle>
         <ContentPresenter
             x:Name="MasterPresenter"
-            Grid.Column="0"
-            HorizontalContentAlignment="Stretch">
+            Grid.Column="0">
         </ContentPresenter>
         <ContentPresenter
             x:Name="DetailsPresenter"
-            Grid.Column="0"
-            HorizontalContentAlignment="Stretch">
+            Grid.Column="0">
         </ContentPresenter>
     </Grid>
 </UserControl>
