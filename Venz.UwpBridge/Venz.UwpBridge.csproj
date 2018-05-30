@@ -84,6 +84,7 @@
     <Compile Include="Source\Windows\UI\Core\AppViewBackButtonVisibility.cs" />
     <Compile Include="Source\Windows\UI\Core\BackRequestedEventArgs.cs" />
     <Compile Include="Source\Windows\UI\Core\SystemNavigationManager.cs" />
+    <Compile Include="Source\Windows\UI\Xaml\UniversalDependencyObject.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
