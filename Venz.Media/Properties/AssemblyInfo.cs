@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Venz")]
 [assembly: AssemblyProduct("Venz.Media")]
-[assembly: AssemblyCopyright("Copyright © Venz 2017")]
+[assembly: AssemblyCopyright("Copyright © Venz 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
