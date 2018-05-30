@@ -79,6 +79,12 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Venz.Core\Source\SystemInfo.cs">
+      <Link>Source\SystemInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Venz.Core\Source\UI\Xaml\Application\Application.Settings.cs">
+      <Link>Source\Application.Settings.cs</Link>
+    </Compile>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
   </ItemGroup>
   <ItemGroup>
