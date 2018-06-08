@@ -51,6 +51,8 @@ namespace Venz.UI.Xaml
         protected override async void OnActivated(IActivatedEventArgs args)
         {
             base.OnActivated(args);
+            Windows.Storage.Pickers.UniversalFileSavePicker.OnActivated(args);
+
             if (args.IsNewInstance())
             {
                 var frame = new Frame();
