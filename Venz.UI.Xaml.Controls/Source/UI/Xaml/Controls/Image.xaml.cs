@@ -22,8 +22,8 @@ namespace Venz.UI.Xaml.Controls
 
         public Int32 DecodePixelWidthOverride
         {
-            get => (Int32)GetValue(DecodePixelWidthOverrideProperty);
-            set => SetValue(DecodePixelWidthOverrideProperty, value);
+            get { return (Int32)GetValue(DecodePixelWidthOverrideProperty); }
+            set { SetValue(DecodePixelWidthOverrideProperty, value); }
         }
 
         public static readonly DependencyProperty DecodePixelHeightOverrideProperty =
@@ -31,8 +31,8 @@ namespace Venz.UI.Xaml.Controls
 
         public Int32 DecodePixelHeightOverride
         {
-            get => (Int32)GetValue(DecodePixelHeightOverrideProperty);
-            set => SetValue(DecodePixelHeightOverrideProperty, value);
+            get { return (Int32)GetValue(DecodePixelHeightOverrideProperty); }
+            set { SetValue(DecodePixelHeightOverrideProperty, value); }
         }
 
         public static readonly DependencyProperty DisablePixelDecodingProperty =
@@ -40,8 +40,8 @@ namespace Venz.UI.Xaml.Controls
             
         public Boolean DisablePixelDecoding
         {
-            get => (Boolean)GetValue(DisablePixelDecodingProperty);
-            set => SetValue(DisablePixelDecodingProperty, value);
+            get { return (Boolean)GetValue(DisablePixelDecodingProperty); }
+            set { SetValue(DisablePixelDecodingProperty, value); }
         }
 
         public static readonly DependencyProperty StretchProperty =

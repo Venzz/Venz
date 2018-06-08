@@ -1,6 +1,5 @@
 ﻿using System;
 using Windows.Foundation;
-using Windows.UI.Core;
 using Windows.UI.Xaml;
 
 namespace Venz.UI.Xaml.Controls
@@ -13,17 +12,8 @@ namespace Venz.UI.Xaml.Controls
 
         public String Label
         {
-            get => (String)GetValue(LabelProperty);
-            set => SetValue(LabelProperty, value);
-        }
-
-        public static readonly DependencyProperty CursorProperty =
-            DependencyProperty.Register("Cursor", typeof(CoreCursorType), typeof(Button), new PropertyMetadata(CoreCursorType.Arrow));
-
-        public CoreCursorType Cursor
-        {
-            get => (CoreCursorType)GetValue(CursorProperty);
-            set => SetValue(CursorProperty, value);
+            get { return (String)GetValue(LabelProperty); }
+            set { SetValue(LabelProperty, value); }
         }
 
         public static readonly DependencyProperty AvailableWidthProperty =
@@ -31,22 +21,11 @@ namespace Venz.UI.Xaml.Controls
 
         public Double AvailableWidth
         {
-            get => (Double)GetValue(AvailableWidthProperty);
-            set => SetValue(AvailableWidthProperty, value);
+            get { return (Double)GetValue(AvailableWidthProperty); }
+            set { SetValue(AvailableWidthProperty, value); }
         }
 
 
-
-        protected override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-            if (GetTemplateChild("RootGrid") is global::Windows.UI.Xaml.Controls.Grid root)
-            {
-                var visualStateGroups = VisualStateManager.GetVisualStateGroups(root);
-                if (visualStateGroups.Count > 0)
-                    visualStateGroups[0].CurrentStateChanged += OnVisualStateChanged;
-            }
-        }
 
         protected override Size MeasureOverride(Size availableSize)
         {
@@ -57,14 +36,11 @@ namespace Venz.UI.Xaml.Controls
             else
             {
                 var defaultSize = base.MeasureOverride(availableSize);
+                if (availableSize.Width == 0)
+                    return defaultSize;
+
                 return new Size((availableSize.Width < AvailableWidth) ? (availableSize.Width / 2 - 12) : AvailableWidth / 2, defaultSize.Height);
             }
-        }
-
-        private void OnVisualStateChanged(Object sender, VisualStateChangedEventArgs args)
-        {
-            if ((args.NewState?.Name == "PointerOver") && (Cursor != CoreCursorType.Arrow))
-                Window.Current.CoreWindow.PointerCursor = new CoreCursor(Cursor, 1);
         }
 
         private void OnLabelChanged(String value) => Content = value;

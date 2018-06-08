@@ -30,14 +30,17 @@ namespace Venz.Images
 
         private static void OnSourceChanged(DependencyObject obj, DependencyPropertyChangedEventArgs args)
         {
+            System.Diagnostics.Debug.WriteLine("");
             var priority = GetPriority(obj);
-            if (obj is IImageUriRenderer uriRenderer)
+            if (obj is IImageUriRenderer)
             {
+                var uriRenderer = (IImageUriRenderer)obj;
                 uriRenderer.UriContent = null;
                 uriRenderer.PictureRequestId = null;
             }
-            if (obj is IImageStreamRenderer streamRenderer)
+            if (obj is IImageStreamRenderer)
             {
+                var streamRenderer = (IImageStreamRenderer)obj;
                 streamRenderer.StreamContent = null;
                 streamRenderer.PictureRequestId = null;
             }

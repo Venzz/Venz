@@ -49,9 +49,9 @@ namespace Venz.Extensions
                 }
                 else
                 {
-                    if ((sourceChild is Windows.UI.Xaml.Controls.ContentPresenter contentPresenter) && (contentPresenter.Content is DependencyObject content))
+                    if ((sourceChild is Windows.UI.Xaml.Controls.ContentPresenter) && (((Windows.UI.Xaml.Controls.ContentPresenter)sourceChild).Content is DependencyObject))
                     {
-                        sourceChild = content;
+                        sourceChild = (DependencyObject)((Windows.UI.Xaml.Controls.ContentPresenter)sourceChild).Content;
                         if (sourceChild is T)
                             children.Add((T)sourceChild);
                     }
@@ -64,8 +64,8 @@ namespace Venz.Extensions
         public static String PrintVisualTree(this DependencyObject source, Int32 level = 0)
         {
             var sourceElement = source;
-            if ((sourceElement is Windows.UI.Xaml.Controls.ContentPresenter contentPresenter) && (contentPresenter.Content is DependencyObject content))
-                sourceElement = content;
+            if ((sourceElement is Windows.UI.Xaml.Controls.ContentPresenter) && (((Windows.UI.Xaml.Controls.ContentPresenter)sourceElement).Content is DependencyObject))
+                sourceElement = (DependencyObject)((Windows.UI.Xaml.Controls.ContentPresenter)sourceElement).Content;
             if (sourceElement == null)
                 return null;
 

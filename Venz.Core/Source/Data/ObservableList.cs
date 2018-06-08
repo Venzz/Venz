@@ -10,12 +10,12 @@ namespace Venz.Data
         protected List<T> Items;
 
         public Object SyncRoot => new Object();
-        public Boolean IsReadOnly => throw new NotImplementedException();
-        public Boolean IsFixedSize => throw new NotImplementedException();
+        public Boolean IsReadOnly { get { throw new NotImplementedException(); } }
+        public Boolean IsFixedSize { get { throw new NotImplementedException(); } }
         public Boolean IsSynchronized => true;
         public Int32 Count => Items.Count;
-        public T this[Int32 index] { get => Items[index]; set => throw new NotImplementedException(); }
-        Object IList.this[Int32 index] { get => Items[index]; set => throw new NotImplementedException(); }
+        public T this[Int32 index] { get { return Items[index]; } set { throw new NotImplementedException(); } }
+        Object IList.this[Int32 index] { get { return Items[index]; } set { throw new NotImplementedException(); } }
 
         public event NotifyCollectionChangedEventHandler CollectionChanged = delegate { };
 
@@ -59,7 +59,7 @@ namespace Venz.Data
             }
         }
 
-        public void Insert(Int32 index, Object value) => throw new NotImplementedException();
+        public void Insert(Int32 index, Object value) { throw new NotImplementedException(); }
 
         public void Move(Int32 oldIndex, Int32 newIndex)
         {
@@ -98,7 +98,7 @@ namespace Venz.Data
 
         protected void OnCollectionChanged(NotifyCollectionChangedEventArgs args) => CollectionChanged(this, args);
 
-        public void Clear() => throw new NotImplementedException();
+        public void Clear() { throw new NotImplementedException(); }
 
         public Int32 IndexOf(T item) => Items.IndexOf(item);
 
@@ -110,13 +110,13 @@ namespace Venz.Data
 
         public Int32 IndexOf(Object value) => (value is T) ? Items.IndexOf((T)value) : -1;
 
-        public Boolean Contains(T item) => throw new NotImplementedException();
+        public Boolean Contains(T item) { throw new NotImplementedException(); }
 
-        public Boolean Contains(Object value) => throw new NotImplementedException();
+        public Boolean Contains(Object value) { throw new NotImplementedException(); }
 
-        public void CopyTo(T[] array, Int32 arrayIndex) => throw new NotImplementedException();
+        public void CopyTo(T[] array, Int32 arrayIndex) { throw new NotImplementedException(); }
 
-        public void CopyTo(Array array, Int32 index) => throw new NotImplementedException();
+        public void CopyTo(Array array, Int32 index) { throw new NotImplementedException(); }
 
         public IEnumerator<T> GetEnumerator() => Items.GetEnumerator();
 

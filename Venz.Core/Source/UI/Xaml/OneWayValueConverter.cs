@@ -7,8 +7,8 @@ namespace Venz.UI.Xaml
     {
         protected abstract Object Convert(T convertingValue);
 
-        public Object Convert(Object value, Type targetType, Object parameter, String language) => Convert((T)value);
+        public Object Convert(Object value, Type targetType, Object parameter, String language) { return Convert((T)value); }
 
-        public Object ConvertBack(Object value, Type targetType, Object parameter, String language) => throw new NotImplementedException();
+        public Object ConvertBack(Object value, Type targetType, Object parameter, String language) { throw new NotImplementedException(); }
     }
 }

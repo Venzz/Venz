@@ -14,8 +14,8 @@ namespace Venz.UI.Xaml
 
         public UIElement NotificationsLayerContent
         {
-            get => (UIElement)GetValue(NotificationsLayerContentProperty);
-            set => SetValue(NotificationsLayerContentProperty, value);
+            get { return (UIElement)GetValue(NotificationsLayerContentProperty); }
+            set { SetValue(NotificationsLayerContentProperty, value); }
         }
 
 

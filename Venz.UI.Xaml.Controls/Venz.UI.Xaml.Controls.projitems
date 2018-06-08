@@ -20,9 +20,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.State.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.EmptyListContent.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\MasterDetailsContent.xaml.cs">
-      <DependentUpon>MasterDetailsContent.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ProgressRing.xaml.cs">
       <DependentUpon>ProgressRing.xaml</DependentUpon>
     </Compile>
@@ -38,10 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\Image.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\MasterDetailsContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

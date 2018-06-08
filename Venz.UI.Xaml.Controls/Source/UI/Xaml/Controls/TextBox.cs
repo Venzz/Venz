@@ -11,8 +11,8 @@ namespace Venz.UI.Xaml.Controls
 
         public String UpdatableText
         {
-            get => (String)GetValue(UpdatableTextProperty);
-            set => SetValue(UpdatableTextProperty, value);
+            get { return (String)GetValue(UpdatableTextProperty); }
+            set { SetValue(UpdatableTextProperty, value); }
         }
 
 

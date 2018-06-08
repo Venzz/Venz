@@ -15,8 +15,8 @@ namespace Venz.UI.Xaml.Controls
 
         public String Label
         {
-            get => (String)GetValue(LabelProperty);
-            set => SetValue(LabelProperty, value);
+            get { return (String)GetValue(LabelProperty); }
+            set { SetValue(LabelProperty, value); }
         }
 
         public static readonly DependencyProperty SizeProperty =
@@ -25,8 +25,8 @@ namespace Venz.UI.Xaml.Controls
 
         public ProgressRingSize Size
         {
-            get => (ProgressRingSize)GetValue(SizeProperty);
-            set => SetValue(SizeProperty, value);
+            get { return (ProgressRingSize)GetValue(SizeProperty); }
+            set { SetValue(SizeProperty, value); }
         }
 
 

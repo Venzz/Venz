@@ -14,8 +14,8 @@ namespace Venz.UI.Xaml.Controls
 
         public DataTemplate EmptyListContentTemplate
         {
-            get => (DataTemplate)GetValue(EmptyListContentTemplateProperty);
-            set => SetValue(EmptyListContentTemplateProperty, value);
+            get { return (DataTemplate)GetValue(EmptyListContentTemplateProperty); }
+            set { SetValue(EmptyListContentTemplateProperty, value); }
         }
 
 

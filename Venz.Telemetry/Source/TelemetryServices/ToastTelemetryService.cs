@@ -56,7 +56,6 @@ namespace Venz.Telemetry
 
         private void ShowToast(String line1, String line2)
         {
-            String normalize(String message, Int32 maxSize) => ((message.Length > maxSize) ? message.Remove(maxSize) : message).Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("'", "&apos;");
             var template =
                 $@"<toast>
                     <visual>
@@ -70,6 +69,11 @@ namespace Venz.Telemetry
             var document = new XmlDocument();
             document.LoadXml(template);
             Notifier.Show(new ToastNotification(document));
+        }
+
+        private String normalize(String message, Int32 maxSize)
+        {
+            return ((message.Length > maxSize) ? message.Remove(maxSize) : message).Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("'", "&apos;");
         }
     }
 }

@@ -12,8 +12,8 @@ namespace Venz.UI.Xaml.Controls
 
         public String Text
         {
-            get => (String)GetValue(TextProperty);
-            set => SetValue(TextProperty, value);
+            get { return (String)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
         }
         
 

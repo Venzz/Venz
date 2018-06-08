@@ -14,8 +14,8 @@ namespace Venz.Extensions
         public static XmlElement FindFirst(this XmlDocument source, String elementName, XmlAttribute attribute)
         {
             foreach (var xmlNode in source.GetElementsByTagName(elementName))
-                if ((xmlNode is XmlElement element) && (element.GetAttribute(attribute.Name) == attribute.Value))
-                    return element;
+                if ((xmlNode is XmlElement) && (((XmlElement)xmlNode).GetAttribute(attribute.Name) == attribute.Value))
+                    return (XmlElement)xmlNode;
             return null;
         }
     }
