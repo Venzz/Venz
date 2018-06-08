@@ -32,6 +32,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\TextBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\ItemsSourceModificationListener.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Windows\UI\Xaml\Controls\SplitView.xaml.cs">
+      <DependentUpon>SplitView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\Image.xaml">
@@ -47,6 +50,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\SplitViewMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Source\Windows\UI\Xaml\Controls\SplitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
