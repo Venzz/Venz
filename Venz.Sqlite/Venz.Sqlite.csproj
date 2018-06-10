@@ -120,7 +120,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.3.3</Version>
+      <Version>6.1.5</Version>
     </PackageReference>
     <PackageReference Include="sqlite">
       <Version>3.13.0</Version>
