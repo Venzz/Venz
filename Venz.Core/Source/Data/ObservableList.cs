@@ -86,6 +86,12 @@ namespace Venz.Data
 
         public void Remove(Object value) => Remove((T)value);
 
+        public void RemoveLast()
+        {
+            lock (SyncRoot)
+                RemoveAt(Items.Count - 1);
+        }
+
         public void RemoveAt(Int32 index)
         {
             lock (SyncRoot)
