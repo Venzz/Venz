@@ -3,10 +3,10 @@ using Venz.UI.Xaml;
 
 namespace Venz.UI
 {
-    public class BooleanTo<T>: OneWayValueConverter<Boolean>
+    public class BooleanTo<T>: OneWayValueConverter<Boolean, T>
     {
         public T TrueValue { get; set; }
         public T FalseValue { get; set; }
-        protected override Object Convert(Boolean value) => value ? TrueValue : FalseValue;
+        public override T Convert(Boolean value) => value ? TrueValue : FalseValue;
     }
 }
