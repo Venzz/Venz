@@ -120,6 +120,7 @@
     <Compile Include="Source\UI\Animation\Extensions\AnimationProperties.cs" />
     <Compile Include="Source\UI\Animation\Extensions\ExponentialEase.cs" />
     <Compile Include="Source\UI\Animation\ValueSetterAnimation.cs" />
+    <Compile Include="Source\UI\Xaml\Flyout\Flyout.cs" />
     <Compile Include="Source\UI\Xaml\OneWayValueConverter.cs" />
     <Compile Include="Source\UI\Xaml\Application\Application.Settings.cs" />
     <Compile Include="Source\SystemInfo.cs" />
