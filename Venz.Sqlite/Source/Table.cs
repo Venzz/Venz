@@ -38,6 +38,8 @@ namespace Venz.Sqlite
             }
         }
 
+        public void Wipe() => Delete().Execute();
+
 
 
         protected Query<T> Select(String details)
