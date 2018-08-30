@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 
 namespace Venz.UI.Xaml.Controls
 {
@@ -61,6 +62,15 @@ namespace Venz.UI.Xaml.Controls
         }
 
 
+
+        public static ProgressRing CreatePageContentLoadingProgressRing()
+        {
+            var converter = new BooleanTo<Visibility>() { TrueValue = Visibility.Collapsed, FalseValue = Visibility.Visible };
+            var playlistLoadingProgressRing = new ProgressRing();
+            playlistLoadingProgressRing.Label = "Loading";
+            playlistLoadingProgressRing.Size = ProgressRingSize.Medium;
+            return playlistLoadingProgressRing;
+        }
 
         private static Thickness GetMargin(ProgressRingSize size)
         {
