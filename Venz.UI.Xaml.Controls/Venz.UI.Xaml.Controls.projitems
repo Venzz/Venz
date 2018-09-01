@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ProgressRing.xaml.cs">
       <DependentUpon>ProgressRing.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\ButtonLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Source\UI\Xaml\Controls\SplitViewMenuHeader.xaml.cs">
       <DependentUpon>SplitViewMenuHeader.xaml</DependentUpon>
     </Compile>

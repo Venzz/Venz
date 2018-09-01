@@ -26,15 +26,6 @@ namespace Venz.UI.Xaml.Controls
             set => SetValue(CursorProperty, value);
         }
 
-        public static readonly DependencyProperty AvailableWidthProperty =
-            DependencyProperty.Register("AvailableWidth", typeof(Double), typeof(Button), new PropertyMetadata(720.0));
-
-        public Double AvailableWidth
-        {
-            get => (Double)GetValue(AvailableWidthProperty);
-            set => SetValue(AvailableWidthProperty, value);
-        }
-
 
 
         protected override void OnApplyTemplate()
@@ -45,19 +36,6 @@ namespace Venz.UI.Xaml.Controls
                 var visualStateGroups = VisualStateManager.GetVisualStateGroups(root);
                 if (visualStateGroups.Count > 0)
                     visualStateGroups[0].CurrentStateChanged += OnVisualStateChanged;
-            }
-        }
-
-        protected override Size MeasureOverride(Size availableSize)
-        {
-            if (Double.IsInfinity(availableSize.Width))
-            {
-                return base.MeasureOverride(availableSize);
-            }
-            else
-            {
-                var defaultSize = base.MeasureOverride(availableSize);
-                return new Size((availableSize.Width < AvailableWidth) ? (availableSize.Width / 2 - 12) : AvailableWidth / 2, defaultSize.Height);
             }
         }
 
