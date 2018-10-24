@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 
-namespace Venz.Data
+namespace Venz.Async
 {
     public class Conveyor<T> where T: class
     {
