@@ -93,7 +93,10 @@ namespace Venz.Async
         public void Clear()
         {
             lock (Sync)
+            {
+                ProcessingItemCancellationToken?.Cancel();
                 PendingItems.Clear();
+            }
         }
 
         private async void Processor()
