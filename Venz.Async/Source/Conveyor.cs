@@ -11,7 +11,7 @@ namespace Venz.Async
         private Object Sync;
         private List<T> PendingItems;
         private ItemAction Action;
-        private CancellationTokenSource ProcessingItemCancellationToken;
+        private Cancellation ProcessingItemCancellation;
 
         public Int32 Count => PendingItems.Count;
         public T ProcessingItem { get; private set; }
@@ -75,7 +75,7 @@ namespace Venz.Async
             {
                 if (ProcessingItem == item)
                 {
-                    ProcessingItemCancellationToken.Cancel();
+                    ProcessingItemCancellation.Cancel();
                     return DequeueOperationStatus.Cancelling;
                 }
                 else if (PendingItems.Remove(item))
@@ -94,7 +94,7 @@ namespace Venz.Async
         {
             lock (Sync)
             {
-                ProcessingItemCancellationToken?.Cancel();
+                ProcessingItemCancellation?.Cancel();
                 PendingItems.Clear();
             }
         }
@@ -107,15 +107,15 @@ namespace Venz.Async
                 {
                     if (PendingItems.Count == 0)
                         Monitor.Wait(Sync);
-
+                    
                     ProcessingItem = PendingItems[0];
                     PendingItems.RemoveAt(0);
-                    ProcessingItemCancellationToken = new CancellationTokenSource();
+                    ProcessingItemCancellation = new Cancellation();
                 }
 
                 try
                 {
-                    await Action.Invoke(ProcessingItem, ProcessingItemCancellationToken.Token);
+                    await Action.Invoke(ProcessingItem, ProcessingItemCancellation);
                 }
                 catch (Exception exception)
                 {
@@ -125,12 +125,14 @@ namespace Venz.Async
                 {
                     ItemRemoved(this, ProcessingItem);
                     ProcessingItem = default(T);
-                    ProcessingItemCancellationToken = null;
+                    ProcessingItemCancellation = null;
                 }
             }
         }
 
-        public delegate Task ItemAction(T item, CancellationToken cancellation);
+
+
+        public delegate Task ItemAction(T item, Cancellation cancellation);
 
         public enum DequeueOperationStatus { Cancelling, Removed, NotExist }
 
@@ -144,6 +146,12 @@ namespace Venz.Async
                 Item = item;
                 Exception = exception;
             }
+        }
+
+        public class Cancellation
+        {
+            public Boolean IsCancellationRequested { get; private set; }
+            public void Cancel() => IsCancellationRequested = true;
         }
     }
 }
