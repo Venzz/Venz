@@ -12,6 +12,8 @@ namespace Venz.UI.Xaml
         private Frame Frame;
         private IDictionary<UInt32, Entry> Entries = new Dictionary<UInt32, Entry>();
 
+        internal Boolean IsBackStackResetInitiated;
+
 
 
         public FrameNavigation(Frame frame) { Frame = frame; }
@@ -35,6 +37,8 @@ namespace Venz.UI.Xaml
                 throw;
             }
         }
+
+        public void ResetBackStack() => IsBackStackResetInitiated = true;
 
         internal Entry GetEntry(UInt32 pageId) => Entries[pageId];
 

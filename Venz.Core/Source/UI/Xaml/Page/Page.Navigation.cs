@@ -56,12 +56,13 @@ namespace Venz.UI.Xaml
             {
                 case NavigationMode.New:
                 case NavigationMode.Forward:
-                    if (this is IBackStackResettablePage)
+                    if ((this is IBackStackResettablePage) || Navigation.IsBackStackResetInitiated)
                     {
+                        Navigation.IsBackStackResetInitiated = false;
                         Frame.BackStack.Clear();
                         Navigation.ResetBasedOn(Id);
                     }
-                    if ((this is IBackStackRemovablePage) && (Frame.BackStack.Count > 0))
+                    else if ((this is IBackStackRemovablePage) && (Frame.BackStack.Count > 0))
                     {
                         Frame.BackStack.RemoveAt(Frame.BackStack.Count - 1);
                         Navigation.RemoveEntry(Id);
