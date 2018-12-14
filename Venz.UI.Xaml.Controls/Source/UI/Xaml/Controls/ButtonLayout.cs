@@ -28,6 +28,16 @@ namespace Venz.UI.Xaml.Controls
             set => SetValue(MaxButtonWidthProperty, value);
         }
 
+        public static readonly DependencyProperty ColumnsProperty =
+            DependencyProperty.Register("Columns", typeof(Int32), typeof(ButtonLayout),
+            new PropertyMetadata(0, (obj, args) => ((ButtonLayout)obj).InvalidateMeasure()));
+
+        public Int32 Columns
+        {
+            get => (Int32)GetValue(ColumnsProperty);
+            set => SetValue(ColumnsProperty, value);
+        }
+
 
 
         protected override Size ArrangeOverride(Size finalSize)
@@ -58,7 +68,8 @@ namespace Venz.UI.Xaml.Controls
 
         private Double GetButtonWidth(Size size)
         {
-            var buttonWidth = (size.Width - (Children.Count - 1) * ButtonMargin) / Children.Count;
+            var columns = (Columns > 0) ? Columns : Children.Count;
+            var buttonWidth = (size.Width - (columns - 1) * ButtonMargin) / columns;
             if (!Double.IsNaN(MaxButtonWidth) && (buttonWidth > MaxButtonWidth))
                 buttonWidth = MaxButtonWidth;
             if (buttonWidth < 0)
