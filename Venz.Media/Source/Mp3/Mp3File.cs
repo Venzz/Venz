@@ -148,9 +148,10 @@ namespace Venz.Media.Mp3
 
                 // this situation means that we've read some samples and haven't found valid sample right after the last valid sample
                 // and it means that the file in wrong format, corrupted or we've found all samples.
-
                 if (samples.Count > 0)
                     break;
+
+                stream.Position += 1;
             }
             return new Tuple<List<Frame>, BitrateType, TimeSpan, UInt32>(samples, bitrateType, duration, (UInt32)(bitrateSum / samples.Count));
         }
