@@ -114,6 +114,7 @@ namespace Venz.Media.Mp3
             var bitrateType = BitrateType.Constant;
             var duration = new TimeSpan();
             var bitrateSum = 0U;
+            var originalPosition = stream.Position;
             while (stream.Position + 20 < streamLength)
             {
                 if (amount.HasValue && (samples.Count == amount.Value))
@@ -152,6 +153,8 @@ namespace Venz.Media.Mp3
                     break;
 
                 stream.Position += 1;
+                if (stream.Position - originalPosition > 1024)
+                    break;
             }
             return new Tuple<List<Frame>, BitrateType, TimeSpan, UInt32>(samples, bitrateType, duration, (UInt32)(bitrateSum / samples.Count));
         }
