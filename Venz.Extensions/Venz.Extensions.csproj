@@ -120,6 +120,7 @@
     <Compile Include="Source\Json\DebugExtensions.cs" />
     <Compile Include="Source\Json\IJsonConvertible.cs" />
     <Compile Include="Source\ScrollViewer.cs" />
+    <Compile Include="Source\SegmentRandomAccessStream.cs" />
     <Compile Include="Source\Size.cs" />
     <Compile Include="Source\StorageFolder.cs" />
     <Compile Include="Source\Stream.cs" />
