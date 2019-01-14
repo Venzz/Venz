@@ -15,7 +15,6 @@ namespace Venz.UI.Xaml.Common
 
         protected override async void SetState(FrameNavigation.Parameter navigationParameter, FrameNavigation.Parameter stateParameter)
         {
-            base.SetState(navigationParameter, stateParameter);
             var changelogFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Changelog.json"));
             var changelogString = await FileIO.ReadTextAsync(changelogFile);
             var releases = new List<Release>();

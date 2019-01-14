@@ -27,7 +27,6 @@ namespace Venz.UI.Xaml.Common
         
         protected override void SetState(FrameNavigation.Parameter navigationParameter, FrameNavigation.Parameter stateParameter)
         {
-            base.SetState(navigationParameter, stateParameter);
             ApplicationTitle = $"{navigationParameter.Get("title")} ({navigationParameter.Get("version")}), OS: {SystemInfo.OsVersion}";
         }
 

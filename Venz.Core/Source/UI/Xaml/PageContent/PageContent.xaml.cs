@@ -34,6 +34,11 @@ namespace Venz.UI.Xaml
             CustomContentLayerControl = (Grid)GetTemplateChild(nameof(CustomContentLayerControl));
             if ((NotificationsLayerControl != null) && (NotificationsLayerContent != null))
                 NotificationsLayerControl.Children.Add(NotificationsLayerContent);
+
+            #if DEBUG
+            if ((NotificationsLayerControl == null) || (CustomContentLayerControl == null))
+                throw new System.InvalidOperationException("Unable to find PageContent's control template.");
+            #endif
         }
 
         private void OnNotificationsLayerContentChanged(UIElement value)
