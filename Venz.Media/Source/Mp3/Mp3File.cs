@@ -156,7 +156,7 @@ namespace Venz.Media.Mp3
                 if (stream.Position - originalPosition > 1024)
                     break;
             }
-            return new Tuple<List<Frame>, BitrateType, TimeSpan, UInt32>(samples, bitrateType, duration, (UInt32)(bitrateSum / samples.Count));
+            return new Tuple<List<Frame>, BitrateType, TimeSpan, UInt32>(samples, bitrateType, duration, (samples.Count > 0) ? (UInt32)(bitrateSum / samples.Count) : 0);
         }
 
         public enum BitrateType { Constant, Variable }
