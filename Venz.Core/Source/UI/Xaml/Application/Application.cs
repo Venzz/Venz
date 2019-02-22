@@ -110,8 +110,15 @@ namespace Venz.UI.Xaml
 
         private void OnCoreWindowKeyUp(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
         {
-            if (args.VirtualKey == Windows.System.VirtualKey.F12)
-                OnDiagnosticsRequested((Frame)Window.Current.Content);
+            switch (args.VirtualKey)
+            {
+                case Windows.System.VirtualKey.F12:
+                    OnDiagnosticsRequested((Frame)Window.Current.Content);
+                    break;
+                default:
+                    ((Window.Current.Content as Frame)?.Content as Page).HandleKeyPressed(args.VirtualKey);
+                    break;
+            }
         }
 
         //

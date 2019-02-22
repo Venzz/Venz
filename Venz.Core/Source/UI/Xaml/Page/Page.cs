@@ -56,5 +56,11 @@ namespace Venz.UI.Xaml
             base.OnNavigatedFrom(args);
             Navigation_OnNavigatedFrom(args);
         }
+
+        internal void HandleKeyPressed(Windows.System.VirtualKey key) => OnKeyPressed(key);
+
+        protected virtual void OnKeyPressed(Windows.System.VirtualKey key)
+        {
+        }
     }
 }
