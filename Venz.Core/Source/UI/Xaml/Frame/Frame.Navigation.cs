@@ -18,14 +18,14 @@ namespace Venz.UI.Xaml
 
         public FrameNavigation(Frame frame) { Frame = frame; }
 
-        public void Navigate(Type sourcePageType) => Navigate(sourcePageType, new Parameter(), null);
+        public void Navigate(Type sourcePageType) => Navigate(sourcePageType, null, null);
 
         public void Navigate(Type sourcePageType, Parameter parameter) => Navigate(sourcePageType, parameter, null);
 
         public void Navigate(Type sourcePageType, Parameter parameter, NavigationTransitionInfo infoOverride)
         {
             var pageId = ++LastPageId;
-            SetEntry(pageId, new Entry(pageId, new Parameter("navigation", parameter)));
+            SetEntry(pageId, new Entry(pageId, new Parameter("navigation", parameter ?? new Parameter())));
 
             try
             {
