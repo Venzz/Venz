@@ -10,6 +10,7 @@ namespace Venz.UI.Xaml
     public class Application: Windows.UI.Xaml.Application
     {
         private Task InitializationTask;
+        private PrelaunchStage Prelaunch;
 
         public static ApplicationDispatcher Dispatcher { get; private set; }
 
@@ -29,6 +30,13 @@ namespace Venz.UI.Xaml
 
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
+            if (args.PrelaunchActivated)
+                Prelaunch = PrelaunchStage.ApplicationPrelaunched;
+            else if (Prelaunch == PrelaunchStage.ApplicationPrelaunched)
+                Prelaunch = PrelaunchStage.ApplicationActivated;
+            else
+                Prelaunch = PrelaunchStage.None;
+
             if (args.IsNewInstance())
             {
                 var frame = new Frame();
@@ -36,21 +44,21 @@ namespace Venz.UI.Xaml
                 Window.Current.Activate();
                 Window.Current.CoreWindow.KeyUp += OnCoreWindowKeyUp;
                 Dispatcher = new ApplicationDispatcher();
-                await StartAsync(frame, args.Kind, args.PreviousExecutionState);
+                await StartAsync(frame, args.Kind, args.PreviousExecutionState, Prelaunch);
                 await InitializationTask;
-                await OnManuallyActivatedAsync(frame, true, args.Arguments);
+                await OnManuallyActivatedAsync(frame, true, Prelaunch, args.Arguments);
                 await OnStartedAsync();
             }
             else
             {
                 Window.Current.Activate();
-                await OnManuallyActivatedAsync((Frame)Window.Current.Content, false, args.Arguments);
+                await OnManuallyActivatedAsync((Frame)Window.Current.Content, false, Prelaunch, args.Arguments);
             }
         }
 
         protected override async void OnActivated(IActivatedEventArgs args)
         {
-            base.OnActivated(args);
+            Prelaunch = (Prelaunch == PrelaunchStage.ApplicationPrelaunched) ? PrelaunchStage.ApplicationActivated : PrelaunchStage.None;
             if (args.IsNewInstance())
             {
                 var frame = new Frame();
@@ -58,25 +66,25 @@ namespace Venz.UI.Xaml
                 Window.Current.Activate();
                 Window.Current.CoreWindow.KeyUp += OnCoreWindowKeyUp;
                 Dispatcher = new ApplicationDispatcher();
-                await StartAsync(frame, args.Kind, args.PreviousExecutionState);
+                await StartAsync(frame, args.Kind, args.PreviousExecutionState, Prelaunch);
                 await InitializationTask;
                 if (args is FileActivatedEventArgs)
-                    await OnFileActivatedAsync(frame, true, (FileActivatedEventArgs)args);
+                    await OnFileActivatedAsync(frame, true, Prelaunch, (FileActivatedEventArgs)args);
                 else if (args is ProtocolActivatedEventArgs)
-                    await OnUriActivatedAsync(frame, true, (ProtocolActivatedEventArgs)args);
+                    await OnUriActivatedAsync(frame, true, Prelaunch, (ProtocolActivatedEventArgs)args);
                 else if (args is VoiceCommandActivatedEventArgs)
-                    await OnVoiceActivatedAsync(frame, true, (VoiceCommandActivatedEventArgs)args);
+                    await OnVoiceActivatedAsync(frame, true, Prelaunch, (VoiceCommandActivatedEventArgs)args);
                 await OnStartedAsync();
             }
             else
             {
                 Window.Current.Activate();
                 if (args is FileActivatedEventArgs)
-                    await OnFileActivatedAsync((Frame)Window.Current.Content, false, (FileActivatedEventArgs)args);
+                    await OnFileActivatedAsync((Frame)Window.Current.Content, false, Prelaunch, (FileActivatedEventArgs)args);
                 else if (args is ProtocolActivatedEventArgs)
-                    await OnUriActivatedAsync((Frame)Window.Current.Content, false, (ProtocolActivatedEventArgs)args);
+                    await OnUriActivatedAsync((Frame)Window.Current.Content, false, Prelaunch, (ProtocolActivatedEventArgs)args);
                 else if (args is VoiceCommandActivatedEventArgs)
-                    await OnVoiceActivatedAsync((Frame)Window.Current.Content, false, (VoiceCommandActivatedEventArgs)args);
+                    await OnVoiceActivatedAsync((Frame)Window.Current.Content, false, Prelaunch, (VoiceCommandActivatedEventArgs)args);
             }
         }
         
@@ -127,15 +135,15 @@ namespace Venz.UI.Xaml
 
         protected virtual Task InitializeAsync() => Task.FromResult<Object>(null);
 
-        protected virtual Task StartAsync(Frame frame, ActivationKind activationKind, ApplicationExecutionState previousExecutionState) => Task.FromResult<Object>(null);
+        protected virtual Task StartAsync(Frame frame, ActivationKind activationKind, ApplicationExecutionState previousExecutionState, PrelaunchStage prelaunchStage) => Task.FromResult<Object>(null);
 
-        protected virtual Task OnManuallyActivatedAsync(Frame frame, Boolean newInstance, String args) => Task.FromResult<Object>(null);
+        protected virtual Task OnManuallyActivatedAsync(Frame frame, Boolean newInstance, PrelaunchStage prelaunchStage, String args) => Task.FromResult<Object>(null);
 
-        protected virtual Task OnFileActivatedAsync(Frame frame, Boolean newInstance, FileActivatedEventArgs args) => Task.FromResult<Object>(null);
+        protected virtual Task OnFileActivatedAsync(Frame frame, Boolean newInstance, PrelaunchStage prelaunchStage, FileActivatedEventArgs args) => Task.FromResult<Object>(null);
 
-        protected virtual Task OnUriActivatedAsync(Frame frame, Boolean newInstance, ProtocolActivatedEventArgs args) => Task.FromResult<Object>(null);
+        protected virtual Task OnUriActivatedAsync(Frame frame, Boolean newInstance, PrelaunchStage prelaunchStage, ProtocolActivatedEventArgs args) => Task.FromResult<Object>(null);
  
-        protected virtual Task OnVoiceActivatedAsync(Frame frame, Boolean newInstance, VoiceCommandActivatedEventArgs args) => Task.FromResult<Object>(null);
+        protected virtual Task OnVoiceActivatedAsync(Frame frame, Boolean newInstance, PrelaunchStage prelaunchStage, VoiceCommandActivatedEventArgs args) => Task.FromResult<Object>(null);
 
         protected virtual Task OnStartedAsync() => Task.FromResult<Object>(null);
 
@@ -146,5 +154,9 @@ namespace Venz.UI.Xaml
         protected virtual Task OnUnhandledExceptionAsync(UnhandledExceptionEventArgs args) => Task.FromResult<Object>(null);
 
         protected virtual void OnDiagnosticsRequested(Frame frame) { }
+
+
+
+        protected enum PrelaunchStage { None, ApplicationPrelaunched, ApplicationActivated }
     }
 }
