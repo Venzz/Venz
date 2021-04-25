@@ -111,7 +111,7 @@ namespace Venz.UI.Xaml
         // Other Events
         //
 
-        private async void OnUnhandledException(Object sender, UnhandledExceptionEventArgs args)
+        private async void OnUnhandledException(Object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs args)
         {
             await OnUnhandledExceptionAsync(args).ConfigureAwait(false);
         }
@@ -151,7 +151,7 @@ namespace Venz.UI.Xaml
 
         protected virtual Task OnSuspendingAsync(DateTimeOffset deadline) => Task.FromResult<Object>(null);
 
-        protected virtual Task OnUnhandledExceptionAsync(UnhandledExceptionEventArgs args) => Task.FromResult<Object>(null);
+        protected virtual Task OnUnhandledExceptionAsync(Windows.UI.Xaml.UnhandledExceptionEventArgs args) => Task.FromResult<Object>(null);
 
         protected virtual void OnDiagnosticsRequested(Frame frame) { }
 

@@ -9,7 +9,7 @@ namespace Venz.Windows
         public static async Task<Boolean> RequestAccessAsync()
         {
             var result = await BackgroundExecutionManager.RequestAccessAsync();
-            return ((result == BackgroundAccessStatus.AllowedMayUseActiveRealTimeConnectivity) || (result == BackgroundAccessStatus.AllowedWithAlwaysOnRealTimeConnectivity));
+            return ((result == BackgroundAccessStatus.AllowedSubjectToSystemPolicy) || (result == BackgroundAccessStatus.AlwaysAllowed));
         }
 
         public static void Register(IBackgroundTrigger taskTrigger, String name, String entryPoint)
