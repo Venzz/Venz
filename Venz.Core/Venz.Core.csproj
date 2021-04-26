@@ -108,6 +108,7 @@
     <Compile Include="Source\Data\IncrementalLoadingCollection.cs" />
     <Compile Include="Source\Data\ObservableList.cs" />
     <Compile Include="Source\Data\ObservableObject.cs" />
+    <Compile Include="Source\Services\OperationResult.cs" />
     <Compile Include="Source\UI\Xaml\Common\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
