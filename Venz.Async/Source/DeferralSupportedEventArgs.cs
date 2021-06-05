@@ -24,7 +24,7 @@ namespace Venz.Async
 
         public interface IDeferral { void Complete(); }
 
-        private class Deferral : IDeferral
+        private class Deferral: IDeferral
         {
             private InvocationCounter Counter;
             public Deferral(InvocationCounter counter) { Counter = counter; }

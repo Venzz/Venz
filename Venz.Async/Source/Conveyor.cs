@@ -8,11 +8,11 @@ namespace Venz.Async
 {
     public class Conveyor<T> where T: class
     {
-        private Object Sync;
         private List<T> PendingItems;
         private ItemAction Action;
         private Cancellation ProcessingItemCancellation;
 
+        public Object Sync { get; } = new Object();
         public Int32 Count => PendingItems.Count;
         public T ProcessingItem { get; private set; }
         public event TypedEventHandler<Conveyor<T>, T> ItemRemoved = delegate { };
@@ -22,14 +22,12 @@ namespace Venz.Async
 
         public Conveyor(ItemAction action)
         {
-            Sync = new Object();
             Action = action;
             PendingItems = new List<T>();
         }
 
         public Conveyor(ItemAction action, IEnumerable<T> items)
         {
-            Sync = new Object();
             Action = action;
             PendingItems = new List<T>(items);
         }

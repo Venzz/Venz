@@ -112,7 +112,7 @@
     <Compile Include="Source\DateTime.cs" />
     <Compile Include="Source\DependencyObject.cs" />
     <Compile Include="Source\Dictionary.cs" />
-    <Compile Include="Source\Enumerable.cs" />
+    <Compile Include="Source\Collection.cs" />
     <Compile Include="Source\Exception.cs" />
     <Compile Include="Source\FontWeight.cs" />
     <Compile Include="Source\FrameworkElement.cs" />
