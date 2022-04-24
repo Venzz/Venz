@@ -105,7 +105,9 @@ namespace Venz.Async
                 {
                     if (PendingItems.Count == 0)
                         Monitor.Wait(Sync);
-                    
+                    if (PendingItems.Count == 0)
+                        continue;
+
                     ProcessingItem = PendingItems[0];
                     PendingItems.RemoveAt(0);
                     ProcessingItemCancellation = new Cancellation();
