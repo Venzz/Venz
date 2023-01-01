@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -48,22 +49,27 @@ namespace Venz.Async
             Task.Run(() => Processor());
         }
 
-        public void Enqueue(T item)
-        {
-            lock (Sync)
-            {
-                PendingItems.Add(item);
-                Monitor.Pulse(Sync);
-            }
-        }
+        public void Enqueue(T item, ConveyorPriority priority = ConveyorPriority.Default) => Enqueue(new List<T>() { item }, priority);
 
-        public void Enqueue(IEnumerable<T> items)
+        public void Enqueue(IEnumerable<T> items, ConveyorPriority priority = ConveyorPriority.Default)
         {
             lock (Sync)
             {
-                PendingItems.AddRange(items);
+                if (priority == ConveyorPriority.High)
+                {
+                    foreach (var item in items)
+                        PendingItems.Remove(item);
+                    foreach (var item in items.Reverse())
+                        PendingItems.Insert(0, item);
+                }
+                else
+                {
+                    PendingItems.AddRange(items);
+                }
                 if (PendingItems.Count > 0)
+                {
                     Monitor.Pulse(Sync);
+                }
             }
         }
 

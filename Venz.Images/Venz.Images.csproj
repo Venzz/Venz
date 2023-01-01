@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DF5F366A-3AD0-410B-A1B2-B94719C551B1}</ProjectGuid>
+    <ProjectGuid>{D3EE633B-BEDC-4B70-BDAA-F8AAEFBB4625}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Venz.Images</RootNamespace>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{04BB7D9D-6F87-4B6D-B1BC-B9FCE6C10CE6}</ProjectGuid>
+    <ProjectGuid>{D91D711F-9A45-459A-AE3D-E85B6D421B8A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Venz.Extensions</RootNamespace>

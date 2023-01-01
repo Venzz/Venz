@@ -109,10 +109,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\AsyncEvent.cs" />
     <Compile Include="Source\AsyncExtensions.cs" />
+    <Compile Include="Source\AsyncInitializationAwaiter.cs" />
     <Compile Include="Source\AsyncOperation.cs" />
     <Compile Include="Source\AsyncOperationMode.cs" />
+    <Compile Include="Source\AsyncQueue.cs" />
     <Compile Include="Source\Conveyor.cs" />
+    <Compile Include="Source\ConveyorPriority.cs" />
     <Compile Include="Source\DeferralSupportedEventArgs.cs" />
+    <Compile Include="Source\IAsyncInitializable.cs" />
     <Compile Include="Source\PeriodicOperation.cs" />
     <EmbeddedResource Include="Properties\Venz.Async.rd.xml" />
   </ItemGroup>
